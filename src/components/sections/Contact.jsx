@@ -1,5 +1,8 @@
-import { Mail, Phone, MapPin, Linkedin, Facebook } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Linkedin, Facebook, Send, Loader2 } from "lucide-react";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const contactItems = [
   {
@@ -40,8 +43,62 @@ const contactItems = [
   },
 ];
 
+const initialForm = { full_name: "", email: "", subject: "", message: "" };
+
+const toastConfig = {
+  position: "top-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  theme: "dark",
+};
+
 export default function Contact() {
+  const [form, setForm] = useState(initialForm);
+  const [loading, setLoading] = useState(false);
+
+  function handleChange(e) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+
+      if (data.limitReached) {
+        toast.error(
+          "You have already reached the 3-attempt limit for this email address.",
+          toastConfig
+        );
+      } else if (data.success) {
+        toast.success("Message sent! I'll get back to you soon.", toastConfig);
+        setForm(initialForm);
+      } else {
+        const msg =
+          data.errors?.map((e) => e.msg).join(", ") ||
+          data.message ||
+          "Something went wrong.";
+        toast.error(msg, toastConfig);
+      }
+    } catch {
+      toast.error("Network error. Please try again.", toastConfig);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
+    <>
+    <ToastContainer />
     <section id="contact" className="py-24 bg-black relative overflow-hidden">
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -101,7 +158,97 @@ export default function Contact() {
             <span className="text-green-400 text-sm font-medium">Available for work</span>
           </div>
         </div>
+
+        {/* Contact form */}
+        <div className="mt-16 max-w-2xl mx-auto">
+          <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-8 backdrop-blur-sm">
+            <h3 className="text-xl font-semibold text-white mb-1">Send me a message</h3>
+            <p className="text-neutral-500 text-sm mb-6">Fill in the form and I'll get back to you.</p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-neutral-400 text-xs uppercase tracking-wider mb-1.5">
+                    Full Name <span className="text-blue-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="full_name"
+                    value={form.full_name}
+                    onChange={handleChange}
+                    placeholder="Juan dela Cruz"
+                    required
+                    className="w-full bg-white/[0.05] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm placeholder-neutral-600 focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-neutral-400 text-xs uppercase tracking-wider mb-1.5">
+                    Email Address <span className="text-blue-400">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="your@email.com"
+                    required
+                    className="w-full bg-white/[0.05] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm placeholder-neutral-600 focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-neutral-400 text-xs uppercase tracking-wider mb-1.5">
+                  Subject <span className="text-blue-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  value={form.subject}
+                  onChange={handleChange}
+                  placeholder="Job opportunity / Collaboration / etc."
+                  required
+                  className="w-full bg-white/[0.05] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm placeholder-neutral-600 focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-neutral-400 text-xs uppercase tracking-wider mb-1.5">
+                  Message <span className="text-blue-400">*</span>
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Write your message here..."
+                  required
+                  rows={5}
+                  className="w-full bg-white/[0.05] border border-white/[0.1] rounded-xl px-4 py-3 text-white text-sm placeholder-neutral-600 focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-colors resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-medium text-sm transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Send Message
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
+    </>
   );
 }
