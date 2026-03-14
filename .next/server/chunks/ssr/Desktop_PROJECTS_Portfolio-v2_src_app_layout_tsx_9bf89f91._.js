@@ -1,0 +1,3 @@
+module.exports=[36330,a=>{"use strict";var b=a.i(36205);function c({children:a}){return(0,b.jsx)("html",{lang:"en",className:"dark",children:(0,b.jsx)("body",{children:a})})}a.s(["default",()=>c,"metadata",0,{title:"Sonny A. Nepomuceno | Full Stack Web Developer",description:"Professional portfolio of Sonny A. Nepomuceno — Full Stack Web Developer with 6+ years of experience in Laravel, Vue.js, Node.js, and MySQL."}])}];
+
+//# sourceMappingURL=Desktop_PROJECTS_Portfolio-v2_src_app_layout_tsx_9bf89f91._.js.map
