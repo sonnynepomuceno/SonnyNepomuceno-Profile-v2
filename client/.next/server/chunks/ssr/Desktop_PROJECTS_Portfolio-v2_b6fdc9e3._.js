@@ -1,3 +1,0 @@
-module.exports=[23407,a=>{a.n(a.i(48800))},3593,a=>{a.n(a.i(36330))},46617,a=>{a.n(a.i(72157))},7530,a=>{a.n(a.i(1528))},85581,a=>{a.n(a.i(82731))},82731,(a,b,c)=>{"use strict";Object.defineProperty(c,"__esModule",{value:!0}),Object.defineProperty(c,"default",{enumerable:!0,get:function(){return f}});let d=a.r(36205),e=a.r(75731);function f(){return(0,d.jsx)(e.HTTPAccessErrorFallback,{status:401,message:"You're not authorized to access this page."})}("function"==typeof c.default||"object"==typeof c.default&&null!==c.default)&&void 0===c.default.__esModule&&(Object.defineProperty(c.default,"__esModule",{value:!0}),Object.assign(c.default,c),b.exports=c.default)}];
-
-//# sourceMappingURL=Desktop_PROJECTS_Portfolio-v2_b6fdc9e3._.js.map
