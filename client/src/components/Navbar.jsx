@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Linkedin, Facebook } from "lucide-react";
+import { Linkedin, Facebook, Github } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -13,8 +13,13 @@ const navLinks = [
 const socialLinks = [
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/sonny-nepomuceno-13ba65324/",
+    href: "https://www.linkedin.com/in/sonny-nepomuceno/",
     icon: <Linkedin size={16} />,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/sonnynepomuceno",
+    icon: <Github size={16} />,
   },
   {
     label: "Facebook",

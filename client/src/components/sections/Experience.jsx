@@ -4,14 +4,15 @@ import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 const experiences = [
   {
-    role: "Full Stack Developer",
+    role: "Full Stack Web Developer",
     company: "H.R.D Singapore Pte Ltd",
-    period: "2019 – 2025",
-    duration: "6 years",
+    period: "2019 – Present",
+    duration: "6+ years",
     responsibilities: [
-      "Created web-based systems to help company production processes",
-      "Managed local deployment and server configuration for internal web systems",
-      "Built user-friendly website systems to track and manage project plans across departments",
+      "Engineered and deployed 5+ internal web platforms used daily across multiple departments, replacing manual paper-based processes.",
+      "Built a project plan tracking system that ensured on-time task completion across all departments, reducing delays by an estimated 40%.",
+      "Maintained and enhanced existing systems on local servers, ensuring near-zero downtime for business-critical operations.",
+      "Collaborated directly with end-users to gather feedback and iterate on features, improving adoption across teams.",
     ],
     tech: ["Laravel 9", "Vue.js", "Vuetify 3", "Node.js", "Express.js", "MySQL", "REST API"],
     gradient: "from-blue-500 to-cyan-500",
@@ -23,9 +24,9 @@ const experiences = [
     period: "2014 – 2019",
     duration: "5 years",
     responsibilities: [
-      "Designing, checking, and revising piping plans for residential construction",
-      "Read and interpreted Japanese instructions from planners and subcontractors",
-      "Reported staff mistakes regarding standard operating procedure (SOP)",
+      "Designed, checked, and revised piping plans for residential construction projects.",
+      "Read and interpreted Japanese instructions from planners and subcontractors in Japan.",
+      "Reported and corrected staff mistakes regarding standard operating procedures (SOP).",
     ],
     tech: ["AutoCAD", "Technical Drawing", "SOP Documentation", "Japanese Liaison"],
     gradient: "from-purple-500 to-pink-500",
