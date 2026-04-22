@@ -51,8 +51,11 @@ export default function App() {
 
               {/* Brand + socials */}
               <div>
-                <a href="#home" className="inline-flex items-center gap-1 text-white font-bold text-xl mb-3 hover:text-blue-400 transition-colors">
-                  SONNY<span className="text-blue-400">.</span>
+                <a href="#home" className="inline-flex items-center gap-2 text-white font-bold text-xl mb-3 hover:text-blue-400 transition-colors">
+                  <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-neutral-900 border border-blue-500/40 text-blue-400 font-extrabold text-[11px] tracking-widest flex-shrink-0">
+                    SON
+                  </span>
+                  Sonny A. Nepomuceno
                 </a>
                 <p className="text-neutral-500 text-sm leading-relaxed mb-4">
                   Full Stack Web Developer crafting web systems with Laravel, Vue.js, and Node.js.

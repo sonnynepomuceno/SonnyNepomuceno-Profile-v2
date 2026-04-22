@@ -53,9 +53,12 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#home"
-            className="text-white font-bold text-lg tracking-tight hover:text-blue-400 transition-colors duration-200"
+            className="flex items-center gap-2 text-white font-bold text-lg tracking-tight hover:text-blue-400 transition-colors duration-200"
           >
-            SONNY<span className="text-blue-400">.</span>
+            <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-neutral-900 border border-blue-500/40 text-blue-400 font-extrabold text-[10px] tracking-widest flex-shrink-0">
+              SON
+            </span>
+            Sonny A. Nepomuceno
           </a>
           <div className="flex items-center gap-1.5">
             {socialLinks.map((s) => (
