@@ -12,7 +12,7 @@ const projects = [
     className: "md:col-span-2",
     gradient: "from-blue-900/60 to-indigo-900/60",
     iconBg: "bg-blue-500/15",
-    image: null,
+    image: "/projects/NHTMS.png",
   },
   {
     title: "Plaster Board Checklist System",
