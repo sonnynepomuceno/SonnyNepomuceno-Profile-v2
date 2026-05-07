@@ -72,8 +72,8 @@ export default function Hero() {
                 About Me
               </a>
               <a
-                href="/SonnyNepomucenoNew-Resume.pdf"
-                download="SonnyNepomuceno-Resume.pdf"
+                href="/SonnyNepomuceno.pdf"
+                download="SonnyNepomuceno.pdf"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full border border-blue-500/40 text-blue-400 font-semibold hover:bg-blue-500/10 hover:border-blue-400 transition-all duration-200 text-sm"
               >
                 <Download size={15} />
