@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+import { CometCard } from "@/components/ui/comet-card";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { BackgroundBeams } from "@/components/ui/background-beams";
@@ -105,6 +106,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <CardContainer containerClassName="py-0">
+              <CometCard>
               <CardBody className="relative group/card w-72 sm:w-80 rounded-2xl p-5 border border-white/10 bg-gradient-to-b from-neutral-900 to-black hover:border-blue-500/30 transition-colors duration-300">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl opacity-0 group-hover/card:opacity-20 blur transition duration-500" />
 
@@ -137,6 +139,7 @@ export default function Hero() {
                   </div>
                 </CardItem>
               </CardBody>
+              </CometCard>
             </CardContainer>
           </motion.div>
         </div>

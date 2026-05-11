@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useMotionValue, useMotionTemplate } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
@@ -21,6 +21,32 @@ function ScrollProgressBar() {
   );
 }
 
+function MouseSpotlight() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 25 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 25 });
+
+  const background = useMotionTemplate`radial-gradient(800px circle at ${springX}px ${springY}px, rgba(255,255,255,0.10) 0%, rgba(100,149,255,0.06) 40%, transparent 70%)`;
+
+  useEffect(() => {
+    const handleMove = (e) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[1] pointer-events-none"
+      style={{ background }}
+    />
+  );
+}
+
 export default function App() {
   const [introComplete, setIntroComplete] = useState(false);
 
@@ -37,6 +63,7 @@ export default function App() {
           transition: "opacity 0.5s ease",
         }}
       >
+        <MouseSpotlight />
         <Navbar />
         <Hero />
         <About />
